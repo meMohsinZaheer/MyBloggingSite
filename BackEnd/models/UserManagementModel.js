@@ -15,7 +15,7 @@ const time= today.getTime()
 
 //Start Block Schema Creating
 const userRegisterSchema = mongoose.Schema({
-    fullname:{type:String,required:true},
+    fullName:{type:String,required:true},
     email:{type:String,required:true},
     phone:{type:Number,required:true},
     userPrivilege:{type:String,default:'User'},
@@ -58,4 +58,3 @@ userRegisterSchema.pre('save',async function(next){
 //End Block Schema Creating
 
 module.exports= mongoose.model('UserRegistration',userRegisterSchema)
-
