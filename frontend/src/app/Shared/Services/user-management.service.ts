@@ -11,7 +11,7 @@ export class UserManagementService {
   ) { }
 
   registerUser(payLoad:any){
-    return this.HttpClient.post('http://localhost:8888/userManagement/userRegister',payLoad)
+    return this.HttpClient.post('http://localhost:4587/userManagement/userRegister',payLoad)
     
   }
 }

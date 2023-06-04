@@ -22,14 +22,18 @@ myFormModel(){
     fullName:new FormControl(''),
     email:new FormControl(''),
     phone:new FormControl(''),
-    roleType:new FormControl(''),
-    createPassword:new FormControl(''),
+    // roleType:new FormControl(''),
+    password:new FormControl(''),
     repeatPassword: new FormControl('')
   })
 }
 
 registerUser(){
   let userFromValues=this.signUpForm.value;
+  this.UserManagementService.registerUser(userFromValues).subscribe((res:any)=>{
+    res;
+    this.signUpForm.reset();
+  })
   console.log(userFromValues);
 }
 }
