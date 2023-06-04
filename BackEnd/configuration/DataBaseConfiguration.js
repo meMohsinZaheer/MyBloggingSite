@@ -8,7 +8,7 @@ async function connectToMongoDB(){
     console.log(process.env.NODE_ENV)
     console.log(process.env.PORT)
 
-const uri='mongodb+srv://oaymohsin:Msn76510063@cluster0.sejsotc.mongodb.net/admin?authSource=admin&replicaSet=atlas-up5crs-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true'
+// const uri='mongodb+srv://oaymohsin:Msn76510063@cluster0.sejsotc.mongodb.net/admin?authSource=admin&replicaSet=atlas-up5crs-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true'
 
     await mongoose.connect(process.env.MONGO_URI,{useNewUrlParser:true,
         useUnifiedTopology:true});

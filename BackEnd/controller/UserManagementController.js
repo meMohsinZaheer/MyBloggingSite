@@ -27,6 +27,7 @@ const userRegister=async (req,res)=>{
                 Data:true
             })
         }
+        if(!checkIfAdminAlreadyExists){
         const userToCreate=new userManagementModel({
             fullName,email,password,repeatPassword,phone
         })
@@ -35,6 +36,14 @@ const userRegister=async (req,res)=>{
             Message:'Register Successfully',
             Data:true
         })
+    }
+    else{
+        return res.json({
+            Message:'User Already exist',
+            Status: null,
+            Data:false
+        })
+    }
     } catch (error) {
         res.json({
             Error:error.message,
