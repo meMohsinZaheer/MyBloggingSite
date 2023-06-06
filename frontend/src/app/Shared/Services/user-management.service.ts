@@ -14,4 +14,5 @@ export class UserManagementService {
     return this.HttpClient.post('http://localhost:4587/userManagement/userRegister',payLoad)
     
   }
+  
 }

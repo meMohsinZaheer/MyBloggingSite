@@ -53,6 +53,47 @@ const userRegister=async (req,res)=>{
     }
 }
 
+const userLogin=async(req,res)=>{
+    try {
+        const{email,password}=req.body;
+        const checkUserExistence=await userManagementModel.findOne(
+            {email:email},
+        ).lean();
+        if(Object.keys(checkUserExistence).length===0){
+            return res.json({
+                Message:'Authentication Failed  either incorrect password or email',
+                Data:false
+            })
+        }
+        const checkUserPassword= await bcrypt.compare(password,checkUserExistence.password);
+        if(checkUserPassword===false){
+            return res.json({
+                Message:'Authentication Failed  either incorrect password or email',
+                Data:false
+            })
+        }
+        const token= jsonwebtoken.sign({
+            name:'hi'
+        },
+        'superSecret',
+        {expiresIn:'15m'})
+        
+        res.json({
+            Message:'Authenticate Successfuly',
+            Data:true,
+            Token:token,
+            UserPrivilege:checkUserExistence.userPrivilege
+        })
+    } catch (error) {
+        res.json({
+            Error:error.message,
+            Data:false,
+            Result:null
+        })
+    }
+}
+
 module.exports={
-    userRegister
+    userRegister,
+    userLogin
 }
