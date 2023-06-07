@@ -6,12 +6,15 @@ import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ManagementModuleComponent } from './management-module/management-module.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminComponent } from './admin/admin.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ManagementModuleComponent,
+    AdminComponent,
     
   ],
   imports: [

@@ -76,7 +76,7 @@ const userLogin=async(req,res)=>{
             name:'hi'
         },
         'superSecret',
-        {expiresIn:'15m'})
+        {expiresIn:'2m'})
         
         res.json({
             Message:'Authenticate Successfuly',
