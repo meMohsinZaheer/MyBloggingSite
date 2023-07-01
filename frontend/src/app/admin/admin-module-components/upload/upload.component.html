@@ -1,23 +1,23 @@
 <div class="d-flex align-items-center father" style="height: 100vh;">
 <div class="container w-75 container-custom "  >
-    <form >
+    <form (ngSubmit)="submitUploadForm()" [formGroup]="myuploadform">
       <div class="row ">
         <div class="col-sm-12  mb-3 d-flex justify-content-center">
           <h2 class="text-center w-75 text-dark p-3 bg-white ">UPLOAD DATA</h2>
         </div>
         <div class="col-sm-12 form-group">
           <label for="name-f" class="">Title</label>
-          <input type="text" class="form-control bg-transparent input-control  p-3" name="fname" id="name-f" placeholder="Enter your first name." required>
+          <input type="text" class="form-control bg-transparent input-control  p-3" name="fname" id="name-f" placeholder="Enter your first name." required formControlName="title">
         </div>
         <div class="col-sm-12 form-group">
           <label for="name-l">Description</label><br>
           <!-- <input type="text" class="form-control p-3" name="lname" id="name-l" placeholder="Enter your last name." required> -->
-          <textarea id="w3review" class="form-control p-3 bg-transparent" rows="8" cols="50" required></textarea>
+          <textarea id="w3review" class="form-control p-3 bg-transparent" rows="8" cols="50" required formControlName="description"></textarea>
         </div>
 
         <div class="col-sm-12 form-group mb-3">
             <label for="name-l">Image</label>
-            <input type="file" class="form-control bg-transparent  p-3" name="lname" id="name-l" placeholder="Enter your last name." required>
+            <input type="file" class="form-control bg-transparent  p-3" name="lname" id="name-l" placeholder="Enter your last name." required multiple (change)="getimages($event)"  #FileSelect>
           </div>
         
        
