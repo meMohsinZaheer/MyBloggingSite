@@ -10,6 +10,7 @@ import { EducationComponent } from './mainModuleComponents/education/education.c
 import { SportsComponent } from './mainModuleComponents/sports/sports.component';
 import { TechAndTelecomComponent } from './mainModuleComponents/tech-and-telecom/tech-and-telecom.component';
 import { PakistanComponent } from './mainModuleComponents/pakistan/pakistan.component';
+import { ChatComponent } from './mainModuleComponents/chat/chat.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
       {path:'education',component:EducationComponent},
       {path:'sports',component:SportsComponent},
       {path:'techandtelecom',component:TechAndTelecomComponent},
-      {path:'pakistan',component:PakistanComponent}
+      {path:'pakistan',component:PakistanComponent},
+      {path:'chat',component:ChatComponent}
 
     ]
   }

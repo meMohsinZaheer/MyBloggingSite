@@ -1,0 +1,15 @@
+label {
+    font-weight: 600;
+    color: #666;
+}
+* {
+    background: rgb(202, 205, 207);
+  }
+body {
+  background: rgb(160, 164, 167);
+}
+button:hover{
+    color:white;
+    background-color: black;
+}
+

@@ -13,6 +13,8 @@ import { EducationComponent } from './mainModuleComponents/education/education.c
 import { BlogsComponent } from './mainModuleComponents/blogs/blogs.component';
 import { PakistanComponent } from './mainModuleComponents/pakistan/pakistan.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ChatComponent } from './mainModuleComponents/chat/chat.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,12 +28,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SportsComponent,
     EducationComponent,
     BlogsComponent,
-    PakistanComponent
+    PakistanComponent,
+    ChatComponent
   ],
   imports: [
     CommonModule,
     MainModuleRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ]
 })
 export class MainModuleModule { }
