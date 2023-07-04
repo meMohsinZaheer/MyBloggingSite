@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DataManagementService } from 'src/app/Shared/Services/data-management.service';
 
 @Component({
   selector: 'app-upload',
@@ -12,7 +13,8 @@ myuploadform: FormGroup | any;
 imageArray:any =[]
 
 constructor(
-  private formBuilder:FormBuilder
+  private formBuilder:FormBuilder,
+  private dataManagementService:DataManagementService
 ){this.buildForm()}
 
 buildForm(){
@@ -22,7 +24,7 @@ buildForm(){
   })
 }
 
-submitUploadForm(){}
+
 
 getimages(event:any){
 
@@ -36,5 +38,19 @@ getimages(event:any){
     this.imageArray=[]
     this.FileSelect.nativeElement.value=null;
   }
+}
+
+submitUploadForm(){
+  let MultiPartFormData=new FormData();
+  MultiPartFormData.append('title',this.myuploadform.get('title').value);
+  MultiPartFormData.append('description',this.myuploadform.get('description').value);
+ this.imageArray.forEach((ImagesData:any )=> {
+  MultiPartFormData.append('images',ImagesData);
+ });
+ this.dataManagementService.UploadData(MultiPartFormData).subscribe
+ ((Response:any)=>{
+  this.myuploadform.reset();
+  this.imageArray=[]
+ })
 }
 }
