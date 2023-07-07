@@ -51,6 +51,10 @@ submitUploadForm(){
  ((Response:any)=>{
   this.myuploadform.reset();
   this.imageArray=[]
+  if (this.FileSelect) {
+    this.FileSelect.nativeElement.value = null;
+  }
+
  })
 }
 }

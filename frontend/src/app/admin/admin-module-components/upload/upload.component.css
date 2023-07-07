@@ -8,27 +8,30 @@ label {
 
 
 .father{
-  background-color: #252424;
+  /* background-color: #252424; */
   overflow: hidden;
   overflow-y:scroll;
-
+  
   /* background-image: radial-gradient(#c31432 30%,#240b36 ); */
 
   
 }
 button:hover{
-    color:black;
-    background-color: white !important;
+    color:rgb(255, 255, 255);
+    background-color: rgb(50, 48, 48) !important;
+    font-size: x-large;
 }
 .container-custom{
   padding:100px 100px;
   /* border-radius: 10px solid black; */
   font-family:Verdana, Geneva, Tahoma, sans-serif;
+  border: 2px solid yellow;
   
 }
 input.form-control:focus {
-  background-color: black !important;
+  /* background-color: black !important; */
   color:white;
+  
 }
 input:focus,
 textarea.form-control:focus {
@@ -43,6 +46,9 @@ h2{
     font-weight: bolder;
     color: #fefefe;
     margin: 20px 0px;
+}
+.form-control{
+  border: 2px solid rgb(105, 102, 102) !important;
 }
 
 
