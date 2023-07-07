@@ -9,6 +9,6 @@ export class DataManagementService {
   constructor(private HttpClient:HttpClient) { }
 
   UploadData(Payload:any){
-    return this.HttpClient.post('',Payload)
+    return this.HttpClient.post('http://localhost:4587/productManagement/UploadData',Payload)
   }
 }

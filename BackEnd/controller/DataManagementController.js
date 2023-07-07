@@ -5,7 +5,7 @@ const ProductData= async (req,res)=>{
     try {
         const {title,description}=req.body;
         let ImageDetails=[]
-        req.files.foreach(arrayobject=>{
+        req.files.forEach(arrayobject=>{
             const {filename,originalname,mimetype}=arrayobject;
             ImageDetails.push({
                 ImageUrl:`assets/News/${title}`,

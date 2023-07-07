@@ -6,7 +6,7 @@ const fs= require('fs')
 
 //Hashing the ImageUrl
 const hashFunc= (filename)=>{
-    const hash=crypto.createHash('md50');
+    const hash=crypto.createHash('md5');
     hash.update(filename)
     const md5sum=hash.digest('hex')
     return md5sum;
@@ -19,14 +19,15 @@ let UploadProductImage= multer({
         destination:(req,next,cb)=>{
             let path=`./assets/Product/${req.body.title}`;
             if(!fs.existsSync(path)){
-                fs.mkdirSync(path,function(err,res){
-                    if (err){
-                        res.json(err)
-                    }
-                    else{
-                        res.json('saved Successfully')
-                    }
-                })
+                fs.mkdirSync(path, { recursive: true }); 
+                // fs.mkdirSync(path,function(err,res){
+                //     if (err){
+                //         res.json(err)
+                //     }
+                //     else{
+                //         res.json('saved Successfully')
+                //     }
+                // })
             }
             cb(null,path)
         },

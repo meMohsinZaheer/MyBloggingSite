@@ -32,10 +32,12 @@ app.all('*', (req, res, next) => {
 
 //Start Block accessing the routes in the entry point
 const _UserManagementRoute=require('./routes/UserManagementRoute')
+const _ProductManagementRoute=require('./routes/DataManagementRoutes')
 //Start Block accessing the routes in the entry point
 
 //Using Routes
 app.use('/userManagement',_UserManagementRoute)
+app.use('/productManagement',_ProductManagementRoute)
 //Using Routes
 
 //Start Block for listening your app on defined port
