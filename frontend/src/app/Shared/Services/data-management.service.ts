@@ -11,4 +11,7 @@ export class DataManagementService {
   UploadData(Payload:any){
     return this.HttpClient.post('http://localhost:4587/productManagement/UploadData',Payload)
   }
+  GetData(){
+    return this.HttpClient.get('http://localhost:4587/productManagement/GetData')
+  }
 }

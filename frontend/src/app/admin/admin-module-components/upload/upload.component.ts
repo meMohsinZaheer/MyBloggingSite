@@ -11,6 +11,7 @@ export class UploadComponent {
   @ViewChild('FileSelect') FileSelect:ElementRef | any;
 myuploadform: FormGroup | any;
 imageArray:any =[]
+category:any=["Tech and Telecom","Business","Sports","Education","Social","Career","Videos"]
 
 constructor(
   private formBuilder:FormBuilder,
@@ -20,7 +21,8 @@ constructor(
 buildForm(){
   this.myuploadform= this.formBuilder.group({
     title: new FormControl('',[Validators.required]),
-    description: new FormControl('',[Validators.required])
+    description: new FormControl('',[Validators.required]),
+    category: new FormControl('',Validators.required)
   })
 }
 
@@ -44,6 +46,7 @@ submitUploadForm(){
   let MultiPartFormData=new FormData();
   MultiPartFormData.append('title',this.myuploadform.get('title').value);
   MultiPartFormData.append('description',this.myuploadform.get('description').value);
+  MultiPartFormData.append('category',this.myuploadform.get('category').value)
  this.imageArray.forEach((ImagesData:any )=> {
   MultiPartFormData.append('images',ImagesData);
  });

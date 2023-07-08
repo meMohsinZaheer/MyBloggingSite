@@ -14,6 +14,13 @@
           <!-- <input type="text" class="form-control p-3" name="lname" id="name-l" placeholder="Enter your last name." required> -->
           <textarea id="w3review" class="form-control p-3 bg-transparent" rows="8" cols="50" required formControlName="description"></textarea>
         </div>
+        <div class="col-sm-12 form-group">
+          <label for="name-l">Category</label><br>
+          <!-- <input type="text" class="form-control p-3" name="lname" id="name-l" placeholder="Enter your last name." required> -->
+          <select name="selectcategory" id="" class="form-control" placeholder="selectcategory" formControlName="category">
+            <option *ngFor="let item of category">{{item}}</option>
+          </select>
+        </div>
 
         <div class="col-sm-12 form-group mb-3">
             <label for="name-l">Image</label>

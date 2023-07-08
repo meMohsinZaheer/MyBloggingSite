@@ -13,6 +13,7 @@ const time=today.getTime()
 const dataUploadSchema=mongoose.Schema({
     title:{type:String,required:true},
     description:{type:String,required:true},
+    category:{type:String,required:true},
     status:{type:Number,default:1},
     softDeleteStatus:{type:Number,default:0},
     imagedetails:[

@@ -17,9 +17,9 @@ const hashFunc= (filename)=>{
 let UploadProductImage= multer({
     storage:multer.diskStorage({
         destination:(req,next,cb)=>{
-            let foldername =(req.body.title).slice(0,8); //Getting the first n charcters from req.body.title as foldername
+            // let foldername =(req.body.title).slice(0,8); //Getting the first n charcters from req.body.title as foldername
 
-            let path=`./assets/Product/${foldername}`;
+            let path=`./assets/Product/${req.body.title}`;
             if(!fs.existsSync(path)){
                 fs.mkdirSync(path, { recursive: true }); 
                 // fs.mkdirSync(path,function(err,res){

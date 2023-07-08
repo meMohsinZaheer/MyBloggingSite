@@ -3,18 +3,18 @@ const fs=require('fs')
 
 const ProductData= async (req,res)=>{
     try {
-        const {title,description}=req.body;
+        const {title,description,category}=req.body;
         let ImageDetails=[]
         req.files.forEach(arrayobject=>{
             const {filename,originalname,mimetype}=arrayobject;
             ImageDetails.push({
-                ImageUrl:`assets/News/${title}`,
+                ImageUrl:`assets/Product/${title}`,
                 ImageName:originalname,
                 ImageMimeType:mimetype
             })
         })
         const docToCreate =new DataModel({
-            title,description, imagedetails:ImageDetails
+            title,description, imagedetails:ImageDetails,category
         })
         const docToSave= await docToCreate.save()
         res.json({
@@ -30,7 +30,24 @@ const ProductData= async (req,res)=>{
         })
     }
 }
+const GetData=async(req,res)=>{
+    try {
+        const docToGet= await DataModel.find();
+        res.json({
+            Message:"All documents Found",
+            Data:true,
+            Result:docToGet
+        })
+    } catch (error) {
+        res.json({
+            Message:error.message,
+            Data:false,
+            Result:null
+        })
+    }
+}
 
 module.exports={
-    ProductData
+    ProductData,
+    GetData
 }
