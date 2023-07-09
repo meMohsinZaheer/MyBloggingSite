@@ -14,6 +14,7 @@ app.use(express.json())
 app.use(express.text())
 app.use(express.raw())
 app.use(cors())
+app.use('/assets', express.static('assets')); //Static file configuration in Express.js: If you are using Express.js, serving static files is typically done using the express.static middleware.
 const PORT=process.env.PORT || 1234;
 //Block End Initialize the app
 

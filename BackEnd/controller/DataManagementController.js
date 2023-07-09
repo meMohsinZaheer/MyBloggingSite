@@ -8,7 +8,7 @@ const ProductData= async (req,res)=>{
         req.files.forEach(arrayobject=>{
             const {filename,originalname,mimetype}=arrayobject;
             ImageDetails.push({
-                ImageUrl:`assets/Product/${title}`,
+                ImageUrl:`assets/Product/${title}/${filename}`,
                 ImageName:originalname,
                 ImageMimeType:mimetype
             })
