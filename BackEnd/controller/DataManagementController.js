@@ -46,8 +46,28 @@ const GetData=async(req,res)=>{
         })
     }
 }
+const GetDataById=async(req,res)=>{
+    try {
+        
+        const Id=req.params._id;
+        
+        const docToFind=await DataModel.findOne({_id:Id})
+        res.json({
+            Message:'Data Found Successfully',
+            Data:true,
+            Result:docToFind
+        })
+    } catch (error) {
+        res.json({
+            Message:error.message,
+            Data:false,
+            Result:null
+        })
+    }
+}
 
 module.exports={
     ProductData,
-    GetData
+    GetData,
+    GetDataById
 }

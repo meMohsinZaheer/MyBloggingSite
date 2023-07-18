@@ -362,9 +362,12 @@
                                         </span>
                                     </td>
                                     <td class="text-end">
-                                        <a href="#" class="btn btn-sm btn-neutral">View</a>
+                                        <a  class="btn btn-sm btn-neutral" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="GetDataById(data._id)">View</a>
                                         <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                            <i class="bi bi-trash"></i>
+                                            <i class="bi bi-pencil" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" (click)="GetDataById(data._id)"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                            <i class="bi bi-trash" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
                                         </button>
                                     </td>
                                 </tr>
@@ -381,4 +384,123 @@
         </main>
     </div>
 </div>
+
+<!-- View Data MODAL -->
+  
+  <!-- Modal -->
+  <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" [formGroup]="ProductForm">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Title</label>
+                  <input readonly type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="" formControlName="title" >
+                 
+                </div>
+                <div class="mb-3">
+                    <label  for="exampleFormControlTextarea1" class="form-label">Description</label>
+                    <textarea readonly class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Category</label>
+                    <input readonly type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="category">
+                    
+                </div>
+
+                <div class="row">
+                    <div class="col-3 d-flex " *ngFor="let newdata of ParticularData.imagedetails">
+                      <div class="card" style="width: 18rem;">
+                        <a href=""><img [src]="Url + newdata.ImageUrl" class="card-img-top" alt="..." style="width: 200px; height: 200px; "></a>
+                        <div class="card-body">
+                            <label for="formFile" class="form-label"><h5>Upload Image</h5></label>
+                          <input class="form-control btn-outline-primary" type="file" id="formFile">
+                          <!-- <h5 class="card-title">{{newdata.title}}</h5>
+                          <p class="card-text">
+                            {{newdata.description.substring(0, 40)}}............</p>
+                          <a href="#" class="btn btn-primary">Read More</a> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+             
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Update Data modal -->
+
+  <!-- Modal -->
+  <div class="modal fade " id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" [formGroup]="ProductForm" (ngSubmit)="Update()">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Title</label>
+                  <input  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="" formControlName="title" >
+                 
+                </div>
+                <div class="mb-3">
+                    <label  for="exampleFormControlTextarea1" class="form-label">Description</label>
+                    <textarea  class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
+                </div>
+                <div class="mb-3">
+                    <!-- <label for="exampleInputEmail1" class="form-label">Category</label>
+                    <input  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="category"> -->
+                    <label for="" class="tag mb-2">Select Categories</label>
+                    <select class="form-select input" formControlName="category">
+                        <!-- <option *ngFor="let data of categories" [value]="data">{{data}}</option> -->
+                        <option value="Tech and Telecom" >Tech and Telecom</option>
+                            <option value="Business">Business</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Education">Education</option>
+                            <option value="Pakistan">Pakistan</option>
+                    </select>
+                </div>
+
+                <div class="row">
+                    <div class="col-3 d-flex " *ngFor="let newdata of ParticularData.imagedetails">
+                      <div class="card" style="width: 18rem;">
+                        <a href=""><img [src]="Url + newdata.ImageUrl" class="card-img-top" alt="..." style="width: 200px; height: 200px; "></a>
+                        <div class="card-body">
+                            <label for="formFile" class="form-label"><h5>Upload Image</h5></label>
+                          <input class="form-control btn-outline-primary" type="file" id="formFile" (change)="getImage($event)">
+                          <!-- <h5 class="card-title">{{newdata.title}}</h5>
+                          <p class="card-text">
+                            {{newdata.description.substring(0, 40)}}............</p>
+                          <a href="#" class="btn btn-primary">Read More</a> -->
+                        </div>
+                        <button type="button" class="btn btn-primary" (click)="updateImage(ParticularData._id,newdata)">Update Image</button>
+                      </div>
+                    </div>
+                  </div>
+
+                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+             
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
 

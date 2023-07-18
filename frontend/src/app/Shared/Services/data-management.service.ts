@@ -18,6 +18,9 @@ export class DataManagementService {
   GetData(){
     return this.HttpClient.get('http://localhost:4587/productManagement/GetData')
   }
+  GetDataById(_id:any){
+    return this.HttpClient.get(`http://localhost:4587/productManagement/GetDataById/${_id}`)
+  }
 
   
 
