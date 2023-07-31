@@ -14,7 +14,9 @@ ProductForm:any | FormGroup;
 AllDataArray :any=[]
 ParticularData:any={}
 FilteredDataArray:any=[]
+makeIdPublic:string=''
 imageDetails:any;
+UpdateImagePayload:any;
   // DatePipe: any;
 constructor(public DataManagementService:DataManagementService,private _FormBuilder:FormBuilder
   ){
@@ -101,6 +103,7 @@ updateProductFormModel(){
   })
 }
 GetDataById(_id:string){
+this.makeIdPublic=_id
   this.DataManagementService.GetDataById(_id).subscribe((res:any)=>{
     this.ParticularData=res.Result;
     console.log(this.ParticularData)
@@ -116,9 +119,21 @@ this.imageDetails= event.target.files[0];
 }
 updateImage(productId:any , oldImageDetails:any){
   let Payload={id:productId,newImageDetails:this.imageDetails,oldImageDetails:oldImageDetails}
-  Payload;
+  // this.UpdateImagePayload= Payload;
+  this.DataManagementService.updateImage(Payload).subscribe((res:any)=>{})
+
+  console.log(Payload)
+  console.log(this.imageDetails)
 }
 Update(){
-  
+  console.log('this.imageDetails before updateImage:', this.UpdateImagePayload);
+  let Payload=this.ProductForm.value;
+  Payload['_id']=this.makeIdPublic;
+  // console.log(Payload)
+  this.DataManagementService.UpdateById(Payload).subscribe((res:any)=>{
+    // this.GetDataById(this.makeIdPublic)
+    
+
+  })
 }
 }

@@ -65,9 +65,90 @@ const GetDataById=async(req,res)=>{
         })
     }
 }
+// const UpdateImageById=async (req,res)=>{
+//     const {id,newImageDetails,oldImageDetails}=req.body;
+//     const docToGet= await DataModel.findOne({_id:id})
+//     if(!!docToGet){
+//         docToGet.imagedetails.forEach(pathOfFiles => {
+//             fs.unlinkSync(`${pathOfFiles.ImageUrl}`);
+//         })
+//         fs.rmdirSync(`../assets/Product/${docToGet.title}`)
+
+//         res.json({
+//             Message:'Deleted Successfully'
+//         })
+//    }
+   
+// }
+
+const UpdateImageById = async (req, res) => {
+    const { id, newImageDetails, oldImageDetails } = req.body;
+    console.log(newImageDetails)
+    const docToGet = await DataModel.findOne({ _id: id });
+
+    if (!!docToGet) {
+        const imageToDelete = docToGet.imagedetails.find((image) => image.ImageUrl === oldImageDetails.ImageUrl);
+
+        if (imageToDelete) {
+            // Delete the file from the filesystem
+            fs.unlinkSync(`${imageToDelete.ImageUrl}`);
+            // fs.rmdirSync(`../assets/Product/${docToGet.title}`)
+
+            // Remove the image from the 'imagedetails' array
+            docToGet.imagedetails = docToGet.imagedetails.filter((image) => image.ImageUrl !== oldImageDetails.ImageUrl);
+            const newselectedimage={
+                ImageUrl:`assets/Product/${docToGet.title}/${newImageDetails.name}`,
+                ImageName:`${newImageDetails.name}`,
+                ImageMimeType:`${newImageDetails.type}`
+            }
+           docToGet.imagedetails.push(newselectedimage)
+            // Save the updated document 
+            await docToGet.save();
+
+ 
+            res.json({
+                Message: 'Deleted Successfully',
+            });
+        } else {
+            res.status(404).json({
+                Message: 'Image not found for deletion.',
+            });
+        }
+    } else {
+        res.status(404).json({
+            Message: 'Document not found.',
+        });
+    }
+};
+
+
+const UpdateById=async(req,res)=>{
+    console.log(req.body)
+    try {
+        const Id= req.body._id;
+        const payLoad= req.body;
+        const docToUpdate=await DataModel.updateOne(
+            {_id:Id},
+            payLoad
+        )
+        res.json({
+            Message:'Updated Successfully',
+            Data:true,
+            Result:docToUpdate
+        })
+    } catch (error) {
+        res.json({
+            Message:error,
+            Result:null,
+            Data:false
+        })
+    }
+}
 
 module.exports={
     ProductData,
     GetData,
-    GetDataById
+    GetDataById,
+    UpdateById,
+    UpdateImageById
 }
