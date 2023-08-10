@@ -33,9 +33,17 @@ export class DataManagementService {
     );
   }
   updateImage(Payload: any) {
-    return this.HttpClient.post(
+    return this.HttpClient.put(
       'http://localhost:4587/productManagement/UpdateImage',
       Payload
     );
+  }
+  softDeleteById(_id:any){
+    return this.HttpClient.delete(
+      `http://localhost:4587/productManagement/DeleteById/${_id}`
+    );
+  }
+  hardDelete(_id:any){
+    return this.HttpClient.delete(`http://localhost:4587/productManagement/HardDelete/${_id}`)
   }
 }

@@ -118,6 +118,7 @@ getImage(event:any){
 this.imageDetails= event.target.files[0];
 }
 updateImage(productId:any , oldImageDetails:any){
+ 
   let Payload={id:productId,newImageDetails:this.imageDetails,oldImageDetails:oldImageDetails}
   // this.UpdateImagePayload= Payload;
   this.DataManagementService.updateImage(Payload).subscribe((res:any)=>{})
@@ -134,6 +135,17 @@ Update(){
     // this.GetDataById(this.makeIdPublic)
     
 
+  })
+}
+softDelete(_id:string){
+  this.DataManagementService.softDeleteById(_id).subscribe((res:any)=>{
+    this.AllDataArray=[]
+    
+  })
+}
+hardDelete(_id:string){
+  this.DataManagementService.hardDelete(_id).subscribe((res:any)=>{
+    this.AllDataArray=[]
   })
 }
 }

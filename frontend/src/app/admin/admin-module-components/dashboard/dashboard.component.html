@@ -367,7 +367,13 @@
                                             <i class="bi bi-pencil" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" (click)="GetDataById(data._id)"></i>
                                         </button>
                                         <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                            <i class="bi bi-trash" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
+                                            <i class="bi bi-trash" (click)="softDelete(data._id)" ></i>
+                                        </button>
+                                        
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn-danger p-2 text-danger-hover" (click)="hardDelete(data._id)">
+                                            Hard Delete
                                         </button>
                                     </td>
                                 </tr>
