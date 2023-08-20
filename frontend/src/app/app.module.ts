@@ -7,6 +7,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ManagementModuleComponent } from './management-module/management-module.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
+
 
 
 
@@ -21,7 +25,12 @@ import { AdminComponent } from './admin/admin.component';
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule,
+    LayoutModule,
+  BrowserAnimationsModule,
+  
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

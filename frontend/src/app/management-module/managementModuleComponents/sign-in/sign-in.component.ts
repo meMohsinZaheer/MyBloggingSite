@@ -28,8 +28,9 @@ export class SignInComponent {
     let userSignInValues = this.signInForm.value;
     this.UserManagementService.loginUser(userSignInValues).subscribe(
       (res: any) => {
-        if (this.UserManagementService.checkIfUserLogin() == false) {
+        if (!this.UserManagementService.checkIfUserLogin()) {
           this.UserManagementService.setTokenLocalStorage(res.Token);
+          localStorage.setItem('userPrivilege', res.UserPrivilege);
           if (res.UserPrivilege === 'Admin') {
             this.Router.navigate(['/admin']);
           } else {

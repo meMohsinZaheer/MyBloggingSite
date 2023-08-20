@@ -24,5 +24,11 @@ export class UserManagementService {
   }
   checkIfUserLogin() {
     return localStorage.getItem('access-token') !== null;
+    // return const userPrivilege= localStorage.getItem('userPrivilege')
+  }
+  CheckUserPrivilege(){
+    const privilege= localStorage.getItem('userPrivilege')
+    return privilege;
+    console.log(privilege)
   }
 }

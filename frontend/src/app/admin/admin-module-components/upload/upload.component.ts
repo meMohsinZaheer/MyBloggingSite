@@ -1,6 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataManagementService } from 'src/app/Shared/Services/data-management.service';
+import { NotifierService } from 'src/app/Shared/Services/notifier.service';
 
 @Component({
   selector: 'app-upload',
@@ -15,7 +17,9 @@ category:any=["Tech and Telecom","Business","Sports","Education","Social","Caree
 
 constructor(
   private formBuilder:FormBuilder,
-  private dataManagementService:DataManagementService
+  private dataManagementService:DataManagementService,
+  private snackBar:MatSnackBar,
+  private snackBarService:NotifierService
 ){this.buildForm()}
 
 buildForm(){
@@ -57,7 +61,15 @@ submitUploadForm(){
   if (this.FileSelect) {
     this.FileSelect.nativeElement.value = null;
   }
-
+  this.snackBar.open('Data inserted successfully!', 'Close', {
+    duration: 10000, // Duration in milliseconds
+    panelClass:'success-snackbar' ,//Custom Css class. we can customize snackbar style
+    horizontalPosition: 'center', // Change to 'end' or 'center'
+      verticalPosition: 'top', 
+  });
  })
+}
+showSnackBar(){
+  this.snackBarService.showNotification()
 }
 }

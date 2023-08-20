@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { DashboardComponent } from './admin-module-components/dashboard/dashboard.component';
 import { UploadComponent } from './admin-module-components/upload/upload.component';
+import { UserManagementGuard } from '../Shared/Guards/user-management.guard';
 
 const routes: Routes = [{
   path:'',component:AdminComponent,

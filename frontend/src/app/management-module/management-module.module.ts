@@ -5,12 +5,14 @@ import { ManagementModuleRoutingModule } from './management-module-routing.modul
 import { SignUpComponent } from './managementModuleComponents/sign-up/sign-up.component';
 import { SignInComponent } from './managementModuleComponents/sign-in/sign-in.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignOutComponent } from './managementModuleComponents/sign-out/sign-out.component';
 
 
 @NgModule({
   declarations: [
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    SignOutComponent
   ],
   imports: [
     CommonModule,

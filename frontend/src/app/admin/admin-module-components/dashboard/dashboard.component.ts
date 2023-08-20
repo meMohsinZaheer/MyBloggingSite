@@ -2,6 +2,7 @@ import * as moment from 'moment';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataManagementService } from 'src/app/Shared/Services/data-management.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +19,8 @@ makeIdPublic:string=''
 imageDetails:any;
 UpdateImagePayload:any;
   // DatePipe: any;
-constructor(public DataManagementService:DataManagementService,private _FormBuilder:FormBuilder
+constructor(public DataManagementService:DataManagementService,private _FormBuilder:FormBuilder,
+  private snackBar:MatSnackBar
   ){
   // this.FilteredDataArray=[]
     this.updateProductFormModel()
