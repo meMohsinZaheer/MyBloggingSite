@@ -6,19 +6,24 @@ import { DashboardComponent } from './admin-module-components/dashboard/dashboar
 import { UploadComponent } from './admin-module-components/upload/upload.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotifierComponent } from './admin-module-components/notifier/notifier.component';
-
+import { UploadMerchandiseComponent } from './admin-module-components/upload-merchandise/upload-merchandise.component';
+import { HeaderComponent } from '../main-module/mainModuleComponents/header/header.component';
+import { MainModuleModule } from '../main-module/main-module.module';
+import { MainModuleRoutingModule } from '../main-module/main-module-routing.module';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     UploadComponent,
-    NotifierComponent
+    NotifierComponent,
+    UploadMerchandiseComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    MainModuleModule,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

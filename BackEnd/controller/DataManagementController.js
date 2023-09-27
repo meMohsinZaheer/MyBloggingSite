@@ -34,6 +34,10 @@ const ProductData = async (req, res) => {
     });
   }
 };
+
+
+
+
 const GetData = async (req, res) => {
   try {
     const docToGet = await DataModel.find();
@@ -183,7 +187,7 @@ const HardDelete = async (req, res) => {
       // const directoryPath = `./assets/Product/bbb`;
 
 
-      fs.rm(directoryPath,{recursive:true}, (error) => {
+      fs.rm(directoryPath, { recursive: true }, (error) => {
         if (error) {
           console.error(`Error removing directory: ${error}`);
         } else {

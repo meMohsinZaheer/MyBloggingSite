@@ -10,17 +10,10 @@ import { AdminComponent } from './admin/admin.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-
-
-
+import { HeaderComponent } from './main-module/mainModuleComponents/header/header.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ManagementModuleComponent,
-    AdminComponent,
-    
-  ],
+  declarations: [AppComponent, ManagementModuleComponent, AdminComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,11 +21,9 @@ import { LayoutModule } from '@angular/cdk/layout';
     HttpClientModule,
     MatSnackBarModule,
     LayoutModule,
-  BrowserAnimationsModule,
-  
-    
+    BrowserAnimationsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

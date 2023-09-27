@@ -38,12 +38,21 @@ export class DataManagementService {
       Payload
     );
   }
-  softDeleteById(_id:any){
+  softDeleteById(_id: any) {
     return this.HttpClient.delete(
       `http://localhost:4587/productManagement/DeleteById/${_id}`
     );
   }
-  hardDelete(_id:any){
-    return this.HttpClient.delete(`http://localhost:4587/productManagement/HardDelete/${_id}`)
+  hardDelete(_id: any) {
+    return this.HttpClient.delete(
+      `http://localhost:4587/productManagement/HardDelete/${_id}`
+    );
+  }
+
+  uploadMerchandisedata(Payload: any) {
+    return this.HttpClient.post(
+      'http://localhost:4587/productManagement/UploadMerchandiseData',
+      Payload
+    );
   }
 }

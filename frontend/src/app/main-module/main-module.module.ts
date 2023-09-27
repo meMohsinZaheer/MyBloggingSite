@@ -15,7 +15,8 @@ import { PakistanComponent } from './mainModuleComponents/pakistan/pakistan.comp
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChatComponent } from './mainModuleComponents/chat/chat.component';
 import { FormsModule } from '@angular/forms';
-
+import { ProductDetailsComponent } from './mainModuleComponents/product-details/product-details.component';
+import { MerchandiseComponent } from './mainModuleComponents/merchandise/merchandise.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +30,16 @@ import { FormsModule } from '@angular/forms';
     EducationComponent,
     BlogsComponent,
     PakistanComponent,
-    ChatComponent
+    ChatComponent,
+    ProductDetailsComponent,
+    MerchandiseComponent,
   ],
   imports: [
     CommonModule,
     MainModuleRoutingModule,
     FontAwesomeModule,
-    FormsModule
-  ]
+    FormsModule,
+  ],
+  exports: [HeaderComponent],
 })
-export class MainModuleModule { }
+export class MainModuleModule {}

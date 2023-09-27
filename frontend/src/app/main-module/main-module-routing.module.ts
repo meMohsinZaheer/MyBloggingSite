@@ -11,29 +11,33 @@ import { SportsComponent } from './mainModuleComponents/sports/sports.component'
 import { TechAndTelecomComponent } from './mainModuleComponents/tech-and-telecom/tech-and-telecom.component';
 import { PakistanComponent } from './mainModuleComponents/pakistan/pakistan.component';
 import { ChatComponent } from './mainModuleComponents/chat/chat.component';
+import { ProductDetailsComponent } from './mainModuleComponents/product-details/product-details.component';
+import { MerchandiseComponent } from './mainModuleComponents/merchandise/merchandise.component';
 
 const routes: Routes = [
   {
-    path:'',component:MainModuleComponent,
-    children:[
-      {path:'',component:HomeComponent},
-      {path:'home',component:HomeComponent},
-      {path:'header',component:HeaderComponent},
-      {path:'footer',component:FooterComponent},
-      {path:'business',component:BusinessComponent},
-      {path:'blogs',component:BlogsComponent},
-      {path:'education',component:EducationComponent},
-      {path:'sports',component:SportsComponent},
-      {path:'techandtelecom',component:TechAndTelecomComponent},
-      {path:'pakistan',component:PakistanComponent},
-      {path:'chat',component:ChatComponent}
-
-    ]
-  }
+    path: '',
+    component: MainModuleComponent,
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'home', component: HomeComponent },
+      { path: 'header', component: HeaderComponent },
+      { path: 'footer', component: FooterComponent },
+      { path: 'business', component: BusinessComponent },
+      { path: 'blogs', component: BlogsComponent },
+      { path: 'education', component: EducationComponent },
+      { path: 'sports', component: SportsComponent },
+      { path: 'techandtelecom', component: TechAndTelecomComponent },
+      { path: 'pakistan', component: PakistanComponent },
+      { path: 'chat', component: ChatComponent },
+      { path: 'productDetails/:productId', component: ProductDetailsComponent },
+      { path: 'merchandise', component: MerchandiseComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MainModuleRoutingModule { }
+export class MainModuleRoutingModule {}
