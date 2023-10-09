@@ -1,0 +1,47 @@
+<div class="container parent-container">
+  <div class="title">{{ productArray?.title }}</div>
+  <div class="images-grid">
+    <div
+      class="image-container"
+      *ngFor="let images of productArray?.imagedetails"
+    >
+      <img [src]="Url + images.ImageUrl" class="image" alt="..." /><br /><br />
+    </div>
+  </div>
+  <div class="details">
+    {{ productArray?.name }}
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <!-- Image Slider -->
+    <div class="col-4">
+      <div
+        id="carouselExampleSlidesOnly"
+        class="carousel slide"
+        data-bs-ride="carousel"
+        *ngFor="let images of productArray?.imagedetails"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              [src]="Url + images.ImageUrl"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <!-- <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+              </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- Image Slider -->
+
+    <div class="col-8"></div>
+  </div>
+</div>

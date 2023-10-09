@@ -13,6 +13,7 @@ import { PakistanComponent } from './mainModuleComponents/pakistan/pakistan.comp
 import { ChatComponent } from './mainModuleComponents/chat/chat.component';
 import { ProductDetailsComponent } from './mainModuleComponents/product-details/product-details.component';
 import { MerchandiseComponent } from './mainModuleComponents/merchandise/merchandise.component';
+import { MerchandiseProductDetailsComponent } from './mainModuleComponents/merchandise-product-details/merchandise-product-details.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
       { path: 'chat', component: ChatComponent },
       { path: 'productDetails/:productId', component: ProductDetailsComponent },
       { path: 'merchandise', component: MerchandiseComponent },
+      {
+        path: 'merchandiseproductDetails/:productId',
+        component: MerchandiseProductDetailsComponent,
+      },
     ],
   },
 ];

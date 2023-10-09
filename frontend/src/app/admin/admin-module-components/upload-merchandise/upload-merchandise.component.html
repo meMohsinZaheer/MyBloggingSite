@@ -61,6 +61,7 @@ the module.ts file of the module -->
             placeholder="Enter your last name."
             required
             multiple
+            (change)="getimages($event)"
             #FileSelect
           />
           <p style="opacity: 0.6" class="mt-0">Image Should be in 16:9 ratio</p>

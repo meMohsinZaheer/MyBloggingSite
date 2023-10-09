@@ -36,6 +36,44 @@ const MerchandiseInsertData = async (req, res) => {
     }
 }
 
+const GetMerchandiseData = async (req, res) => {
+    try {
+        const docToGet = await MerchandiseModel.find();
+        res.json({
+            Message: "All documents Found",
+            Data: true,
+            Result: docToGet,
+        });
+    } catch (error) {
+        res.json({
+            Message: error.message,
+            Data: false,
+            Result: null,
+        });
+    }
+};
+
+const GetMerchandiseDataById = async (req, res) => {
+    try {
+        const Id = req.params._id;
+
+        const docToFind = await MerchandiseModel.findOne({ _id: Id });
+        res.json({
+            Message: "Data Found Successfully",
+            Data: true,
+            Result: docToFind,
+        });
+    } catch (error) {
+        res.json({
+            Message: error.message,
+            Data: false,
+            Result: null,
+        });
+    }
+};
+
 module.exports = {
-    MerchandiseInsertData
+    MerchandiseInsertData,
+    GetMerchandiseData,
+    GetMerchandiseDataById
 }

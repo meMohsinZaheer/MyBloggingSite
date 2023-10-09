@@ -55,4 +55,15 @@ export class DataManagementService {
       Payload
     );
   }
+  getMerchandiseData() {
+    return this.HttpClient.get(
+      'http://localhost:4587/productManagement/GetMerchandiseData'
+    );
+  }
+
+  GetMerchandiseDataById(_id: any) {
+    return this.HttpClient.get(
+      `http://localhost:4587/productManagement/GetMerchandiseDataById/${_id}`
+    );
+  }
 }

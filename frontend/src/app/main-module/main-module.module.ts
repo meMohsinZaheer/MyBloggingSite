@@ -17,6 +17,7 @@ import { ChatComponent } from './mainModuleComponents/chat/chat.component';
 import { FormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './mainModuleComponents/product-details/product-details.component';
 import { MerchandiseComponent } from './mainModuleComponents/merchandise/merchandise.component';
+import { MerchandiseProductDetailsComponent } from './mainModuleComponents/merchandise-product-details/merchandise-product-details.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MerchandiseComponent } from './mainModuleComponents/merchandise/merchan
     ChatComponent,
     ProductDetailsComponent,
     MerchandiseComponent,
+    MerchandiseProductDetailsComponent,
   ],
   imports: [
     CommonModule,
