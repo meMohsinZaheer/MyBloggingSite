@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +8,8 @@ export class DataManagementService {
   public AllData: any = [];
   public SportData: any = [];
   public Url = 'http://localhost:4587/';
+
+  cartData = new EventEmitter<[]>();
   constructor(private HttpClient: HttpClient) {}
 
   UploadData(Payload: any) {
@@ -65,5 +67,18 @@ export class DataManagementService {
     return this.HttpClient.get(
       `http://localhost:4587/productManagement/GetMerchandiseDataById/${_id}`
     );
+  }
+
+  AddToLocalCart(data: any) {
+    let cartData = [];
+    let localcart = localStorage.getItem('localcart');
+    if (!localcart) {
+      localStorage.setItem('localcart', JSON.stringify([data]));
+    } else {
+      cartData = JSON.parse(localcart);
+      cartData.push(data);
+      localStorage.setItem('localcart', JSON.stringify(cartData));
+    }
+    this.cartData.emit(cartData);
   }
 }

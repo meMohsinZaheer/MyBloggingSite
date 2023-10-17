@@ -77,10 +77,11 @@
         <a *ngIf="!check" class="nav-link" routerLink="/management/sign-in"
           ><i class="fa-solid fa-user"></i> Login</a
         >
+        <a class="nav-link text-danger" href=""> CART({{ CartItems }})</a>
         <a
           *ngIf="check"
           class="nav-link text-danger"
-          routerLink="./management/sign-out"
+          routerLink="/management/sign-out"
           ><i class="fa-solid fa fa-sign-out"></i> Log Out</a
         >
       </div>
