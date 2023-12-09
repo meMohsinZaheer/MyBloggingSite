@@ -12,6 +12,8 @@ export class MerchandiseProductDetailsComponent {
   itemQuantityDefault: number | any;
   productArray: object | any;
   Url = 'http://localhost:4587/';
+  removeCart = false;
+  idArray = [];
 
   constructor(
     private dataManagementService: DataManagementService,
@@ -26,6 +28,25 @@ export class MerchandiseProductDetailsComponent {
         this.productArray = datafromBackend.Result;
         console.log(this.ItemQuantity.nativeElement.defaultValue);
       });
+
+    let cartData = localStorage.getItem('localcart');
+    if (productId && cartData) {
+      let items = JSON.parse(cartData);
+
+      items = items.filter((item: any) => {
+        return productId === item._id;
+        // console.log(item._id);
+        // return 1;
+      });
+      console.log(items.length);
+
+      // console.log(items.length);
+      if (items.length > 0) {
+        this.removeCart = true;
+      } else {
+        this.removeCart = false;
+      }
+    }
   }
 
   plus() {
@@ -55,8 +76,13 @@ export class MerchandiseProductDetailsComponent {
     if (!localStorage.getItem('access-token')) {
       this.productArray.itemquantity = this.itemQuantityDefault;
       this.dataManagementService.AddToLocalCart(this.productArray);
+      this.removeCart = true;
     } else {
       console.warn('else');
     }
+  }
+  removeFromCart(id: any) {
+    this.dataManagementService.removeFromCart(id);
+    this.removeCart = false;
   }
 }

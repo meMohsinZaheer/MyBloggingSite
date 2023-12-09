@@ -32,8 +32,9 @@ export class SignInComponent {
     let userSignInValues = this.signInForm.value;
     this.UserManagementService.loginUser(userSignInValues).subscribe(
       (res: any) => {
-        console.log(res);
-        if (res.Data == 'true') {
+        console.log(res.Data);
+
+        if (res.Data === true) {
           if (!this.UserManagementService.checkIfUserLogin()) {
             this.UserManagementService.setTokenLocalStorage(res.Token);
             localStorage.setItem('userPrivilege', res.UserPrivilege);

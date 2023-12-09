@@ -36,11 +36,20 @@
       </div>
 
       <button
+        *ngIf="!removeCart"
         class="btn-success w-75 mt-5 p-3 border-0"
         [disabled]="itemQuantityDefault > 0 ? false : true"
         (click)="AddtoCart()"
       >
         Add to Cart
+      </button>
+
+      <button
+        *ngIf="removeCart"
+        class="btn-success w-75 mt-5 p-3 border-0"
+        (click)="removeFromCart(productArray._id)"
+      >
+        Remove from Cart
       </button>
     </div>
   </div>
