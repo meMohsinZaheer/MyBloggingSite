@@ -5,7 +5,7 @@ const MerchandiseInsertData = async (req, res) => {
 
     try {
 
-        const { name, quantity, category } = req.body;
+        const { name, quantity, price, category } = req.body;
         let imageDetails = [];
         req.files.forEach(imageArrayObject => {
             const { filename, originalname, mimetype } = imageArrayObject;
@@ -17,7 +17,7 @@ const MerchandiseInsertData = async (req, res) => {
         });
 
         const docToCreate = new MerchandiseModel({
-            name, quantity, category,
+            name, quantity, category, price,
             imagedetails: imageDetails
         })
 

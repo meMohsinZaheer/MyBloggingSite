@@ -29,6 +29,8 @@ export class UploadMerchandiseComponent {
     this.myuploadform = this.formbuilder.group({
       name: new FormControl('', [Validators.required]),
       quantity: new FormControl('', [Validators.required]),
+      price: new FormControl('', [Validators.required]),
+
       category: new FormControl('', Validators.required),
     });
   }
@@ -52,6 +54,7 @@ export class UploadMerchandiseComponent {
       'quantity',
       this.myuploadform.get('quantity').value
     );
+    MultiPartFormData.append('price', this.myuploadform.get('price').value);
     MultiPartFormData.append(
       'category',
       this.myuploadform.get('category').value

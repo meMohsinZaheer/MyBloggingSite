@@ -13,11 +13,23 @@ export class HeaderComponent {
 
   ngOnInit(): void {
     let Cartdata = localStorage.getItem('localcart');
+    let userId = localStorage.getItem('userId');
     if (Cartdata) {
       this.CartItems = JSON.parse(Cartdata).length;
     }
+    if (userId) {
+      this.dataManagementService
+        .GetCartDataById(userId)
+        .subscribe((data: any) => {
+          // let emitter = JSON.parse(data.Result);
+
+          this.dataManagementService.cartDataEmitter(data.Result);
+        });
+    }
+
     this.dataManagementService.cartData.subscribe((items) => {
       this.CartItems = items.length;
+      console.log(items);
     });
   }
   constructor(

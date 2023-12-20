@@ -7,10 +7,17 @@ import { EventEmitter, Injectable } from '@angular/core';
 export class DataManagementService {
   public AllData: any = [];
   public SportData: any = [];
+  public cartDataArray: any = [];
   public Url = 'http://localhost:4587/';
 
-  cartData = new EventEmitter<[]>();
+  // This is EventEmitter, I used it here to update cart items in header. EventEmitter must have
+  // a subscriber and the subcriber of this event emitter is in header component
+  public cartData = new EventEmitter<[]>();
   constructor(private HttpClient: HttpClient) {}
+
+  cartDataEmitter(emitarray: any) {
+    this.cartData.emit(emitarray);
+  }
 
   UploadData(Payload: any) {
     return this.HttpClient.post(
@@ -69,6 +76,32 @@ export class DataManagementService {
     );
   }
 
+  AddToCart(Payload: any) {
+    return this.HttpClient.post(
+      'http://localhost:4587/productManagement/AddToCart',
+      Payload
+    );
+  }
+
+  GetCartDataById(_id: any) {
+    let dbcart: [] | any = [];
+    return this.HttpClient.get(
+      `http://localhost:4587/productManagement/GetCartDataById/${_id}`
+    );
+  }
+
+  DeleteCartDataById(_id: any) {
+    return this.HttpClient.delete(
+      `http://localhost:4587/productManagement/DeleteCartItemById/${_id}`
+    );
+  }
+
+  DeleteAllCartsByUserId(_id: any) {
+    return this.HttpClient.delete(
+      `http://localhost:4587/productManagement/DeleteAllCartsByUserId/${_id}`
+    );
+  }
+
   AddToLocalCart(data: any) {
     let cartData = [];
     let localcart = localStorage.getItem('localcart');
@@ -79,7 +112,8 @@ export class DataManagementService {
       cartData.push(data);
       localStorage.setItem('localcart', JSON.stringify(cartData));
     }
-    this.cartData.emit(cartData);
+
+    this.cartDataEmitter(cartData);
   }
   removeFromCart(productId: any) {
     let cartData = localStorage.getItem('localcart');
@@ -92,5 +126,23 @@ export class DataManagementService {
       localStorage.setItem('localcart', JSON.stringify(items));
       this.cartData.emit(items);
     }
+  }
+
+  orderNow(Payload: any) {
+    return this.HttpClient.post(
+      'http://localhost:4587/productManagement/CreateOrder',
+      Payload
+    );
+  }
+
+  GetOrdersById(userId: any) {
+    return this.HttpClient.get(
+      `http://localhost:4587/productManagement/GetOrdersById/${userId}`
+    );
+  }
+  CancelOrderById(OrderId: any) {
+    return this.HttpClient.delete(
+      `http://localhost:4587/productManagement/CancelOrderById/${OrderId}`
+    );
   }
 }

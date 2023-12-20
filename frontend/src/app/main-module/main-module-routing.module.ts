@@ -14,6 +14,9 @@ import { ChatComponent } from './mainModuleComponents/chat/chat.component';
 import { ProductDetailsComponent } from './mainModuleComponents/product-details/product-details.component';
 import { MerchandiseComponent } from './mainModuleComponents/merchandise/merchandise.component';
 import { MerchandiseProductDetailsComponent } from './mainModuleComponents/merchandise-product-details/merchandise-product-details.component';
+import { CartDetailsComponent } from './mainModuleComponents/cart-details/cart-details.component';
+import { CheckoutComponent } from './mainModuleComponents/checkout/checkout.component';
+import { MyOrdersComponent } from './mainModuleComponents/my-orders/my-orders.component';
 
 const routes: Routes = [
   {
@@ -37,6 +40,9 @@ const routes: Routes = [
         path: 'merchandiseproductDetails/:productId',
         component: MerchandiseProductDetailsComponent,
       },
+      { path: 'cartdetails', component: CartDetailsComponent },
+      { path: 'checkout', component: CheckoutComponent },
+      { path: 'my-Orders', component: MyOrdersComponent },
     ],
   },
 ];

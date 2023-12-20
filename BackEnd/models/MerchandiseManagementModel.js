@@ -5,6 +5,7 @@ const date = require('../Utils/date')
 const merchandiseUploadSchema = mongoose.Schema({
     name: { type: String, required: true },
     quantity: { type: Number, required: true },
+    price: { type: Number, required: true },
     category: { type: String, required: true },
     status: { type: Number, default: 1 },
     softDeleteStatus: { type: Number, default: 0 },

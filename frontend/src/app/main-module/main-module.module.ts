@@ -14,10 +14,13 @@ import { BlogsComponent } from './mainModuleComponents/blogs/blogs.component';
 import { PakistanComponent } from './mainModuleComponents/pakistan/pakistan.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ChatComponent } from './mainModuleComponents/chat/chat.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './mainModuleComponents/product-details/product-details.component';
 import { MerchandiseComponent } from './mainModuleComponents/merchandise/merchandise.component';
 import { MerchandiseProductDetailsComponent } from './mainModuleComponents/merchandise-product-details/merchandise-product-details.component';
+import { CartDetailsComponent } from './mainModuleComponents/cart-details/cart-details.component';
+import { CheckoutComponent } from './mainModuleComponents/checkout/checkout.component';
+import { MyOrdersComponent } from './mainModuleComponents/my-orders/my-orders.component';
 
 @NgModule({
   declarations: [
@@ -35,12 +38,16 @@ import { MerchandiseProductDetailsComponent } from './mainModuleComponents/merch
     ProductDetailsComponent,
     MerchandiseComponent,
     MerchandiseProductDetailsComponent,
+    CartDetailsComponent,
+    CheckoutComponent,
+    MyOrdersComponent,
   ],
   imports: [
     CommonModule,
     MainModuleRoutingModule,
     FontAwesomeModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [HeaderComponent],
 })

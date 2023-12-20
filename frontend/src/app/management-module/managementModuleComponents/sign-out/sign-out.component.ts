@@ -5,18 +5,20 @@ import { UserManagementService } from 'src/app/Shared/Services/user-management.s
 @Component({
   selector: 'app-sign-out',
   templateUrl: './sign-out.component.html',
-  styleUrls: ['./sign-out.component.css']
+  styleUrls: ['./sign-out.component.css'],
 })
 export class SignOutComponent {
-  constructor(private userManagementService:UserManagementService,
-    private Router:Router
-    ){}
-    ngOnInit(){
-      this.signout()
-    }
-    signout(){
-      localStorage.removeItem('access-token')
-      localStorage.removeItem('userPrivilege')
-     this.Router.navigate(['/main'])
-    }
+  constructor(
+    private userManagementService: UserManagementService,
+    private Router: Router
+  ) {}
+  ngOnInit() {
+    this.signout();
+  }
+  signout() {
+    localStorage.removeItem('access-token');
+    localStorage.removeItem('userPrivilege');
+    localStorage.removeItem('userId');
+    this.Router.navigate(['/main']);
+  }
 }

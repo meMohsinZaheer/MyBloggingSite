@@ -77,7 +77,9 @@
         <a *ngIf="!check" class="nav-link" routerLink="/management/sign-in"
           ><i class="fa-solid fa-user"></i> Login</a
         >
-        <a class="nav-link text-danger" href=""> CART({{ CartItems }})</a>
+        <a class="nav-link text-danger" routerLink="/cartdetails">
+          CART({{ CartItems }})</a
+        >
         <a
           *ngIf="check"
           class="nav-link text-danger"
